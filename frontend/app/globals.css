@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+@theme {
+  --font-body: var(--font-inter);
+  --font-display: var(--font-oswald);
+  --font-accent: var(--font-playfair);
+}
+
+:root {
+  --primary: #CC1A1A;
+  --bg-dark: #0A0A0A;
+}
+
+/* ===== AWWWARDS LEVEL STYLES ===== */
+
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: white;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  cursor: none;
+}
+
+/* CUSTOM NAV BAR STYLES */
+.nav-fixed-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 60px;
+  background: linear-gradient(to bottom, rgba(10, 10, 10, 0.8) 0%, transparent 100%);
+  backdrop-filter: blur(10px);
+  z-index: 2000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.nav-logo-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Image/Video Utility */
+.slide-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background-color: var(--bg-dark);
+}
+
+/* Selection Highlight */
+::selection {
+  background: var(--primary);
+  color: white;
+}
+
+/* Awwwards Buttons */
+.btn-premium {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.btn-premium::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  z-index: -1;
+  transition: all 0.6s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.btn-premium:hover::after {
+  top: 0;
+}
+
+.btn-premium:hover {
+  color: black !important;
+}
+
+/* Smooth Video reveal */
+video {
+  transition: opacity 1s ease;
+}
+
+/* Hide interactive components for layout debug if needed, but keeping them for now */
+.parallax-bg {
+  will-change: transform;
+}
