@@ -127,10 +127,19 @@ const createIndexes = async () => {
     }
 };
 
-connectDB();
+// ===== START SERVER =====
+const startServer = async () => {
+    try {
+        await connectDB();
+        const PORT = process.env.PORT || 5000;
+        app.listen(PORT, () => {
+            console.log(`🚀 Shawarma Inn API → http://localhost:${PORT}`);
+            console.log(`📖 Health Check → http://localhost:${PORT}/api/health`);
+        });
+    } catch (err) {
+        console.error('SERVER FAILED TO START:', err.message);
+        process.exit(1);
+    }
+};
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-    console.log(`🚀 Shawarma Inn API → http://localhost:${PORT}`);
-    console.log(`📖 Health Check → http://localhost:${PORT}/api/health`);
-});
+startServer();
